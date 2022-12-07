@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="UserToGroupMapping ≔ ∅" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="GroupToGroupMapping ≔ ∅" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="UserIndirectMembership ≔ ∅" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="GroupIndirectMembership ≔ ∅" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="(" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="AddUserToGroup">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="User"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="Group"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="User ∈ USERS"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="Group ∈ GROUPS"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="UserToGroupMapping ≔ UserToGroupMapping ∪ {User ↦ Group}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="UserIndirectMembership ≔ UserIndirectMembership ∪ {User ↦ Group}" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.seesContext name="+" org.eventb.core.target="Context"/>
+    <org.eventb.core.variable name="," org.eventb.core.identifier="UserToGroupMapping"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="inv2" org.eventb.core.predicate="UserToGroupMapping ∈ USERS ↔ GROUPS "/>
+    <org.eventb.core.variable name="/" org.eventb.core.identifier="GroupToGroupMapping"/>
+    <org.eventb.core.invariant name="0" org.eventb.core.label="inv4" org.eventb.core.predicate="GroupToGroupMapping ∈ GROUPS ↔ GROUPS "/>
+    <org.eventb.core.event name="1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="AddGroupToGroup">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="ContainingGroup"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="MemberGroup"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="ContainingGroup ∈ GROUPS"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="MemberGroup ∈ GROUPS"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="GroupToGroupMapping ≔ GroupToGroupMapping ∪ {MemberGroup ↦ ContainingGroup}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="GroupIndirectMembership ≔ GroupIndirectMembership ∪ {MemberGroup ↦ ContainingGroup}" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="2" org.eventb.core.identifier="UserIndirectMembership"/>
+    <org.eventb.core.invariant name="3" org.eventb.core.label="inv5" org.eventb.core.predicate="UserIndirectMembership ∈ USERS ↔ GROUPS "/>
+    <org.eventb.core.invariant name="4" org.eventb.core.label="inv6" org.eventb.core.predicate="UserToGroupMapping ⊆ UserIndirectMembership"/>
+    <org.eventb.core.variable name="5" org.eventb.core.identifier="GroupIndirectMembership"/>
+    <org.eventb.core.invariant name="6" org.eventb.core.label="inv7" org.eventb.core.predicate="GroupIndirectMembership ∈ GROUPS ↔ GROUPS"/>
+    <org.eventb.core.invariant name="7" org.eventb.core.label="inv8" org.eventb.core.predicate="GroupToGroupMapping ⊆ GroupIndirectMembership"/>
+    <org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ValidateIndirectGroup">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="memberGroup"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="containingGroup"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="memberGroup ∈ GROUPS"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="containingGroup ∈ GROUPS"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="intermediateGroup ∈ GROUPS"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="GroupIndirectMembership ≔ GroupIndirectMembership ∪ {memberGroup ↦ containingGroup}" org.eventb.core.label="act1"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.identifier="intermediateGroup"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd4" org.eventb.core.predicate="memberGroup ↦ intermediateGroup ∈ GroupIndirectMembership"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd5" org.eventb.core.predicate="intermediateGroup ↦ containingGroup ∈ GroupToGroupMapping"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="9" org.eventb.core.label="inv9" org.eventb.core.predicate="∀rel·rel∈GroupIndirectMembership ⇒ (∃path·path∈ℕ→GROUPS∧path(0)=prj1(rel)∧(∃k·k∈ℕ∧path(k)=prj2(rel)∧(∀n·n∈ℕ∧n&lt;k⇒path(n)↦path(n+1)∈GroupToGroupMapping)))"/>
+    <org.eventb.core.event name="@" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="RemoveGroupFromGroup">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="ContainingGroup"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="MemberGroup"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="ContainingGroup ∈ GROUPS"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="MemberGroup∈ GROUPS"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="MemberGroup ↦ ContainingGroup ∈ GroupToGroupMapping"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="GroupToGroupMapping ≔ GroupToGroupMapping∖{MemberGroup ↦ ContainingGroup}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="GroupIndirectMembership ≔ GroupToGroupMapping∖{MemberGroup ↦ ContainingGroup}" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="UserIndirectMembership ≔ UserToGroupMapping" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="RemoveUserFromGroup">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="User"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="Group"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="User ∈ USERS"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="Group ∈ GROUPS"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="User ↦ Group ∈ UserToGroupMapping"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="UserToGroupMapping ≔ UserToGroupMapping∖{User↦Group}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="UserIndirectMembership ≔ ({User}⩤UserIndirectMembership) ∪ (UserToGroupMapping∖{User↦Group}) " org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="B" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="ValidateIndirectUser">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="User"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="DirectGroup"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="IndirectGroup"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd1" org.eventb.core.predicate="User∈USERS"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="DirectGroup∈GROUPS"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="IndirectGroup∈GROUPS"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="User↦DirectGroup∈UserToGroupMapping"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="DirectGroup ↦ IndirectGroup ∈ GroupIndirectMembership"/>
+        <org.eventb.core.action name="/" org.eventb.core.assignment="UserIndirectMembership ≔ UserIndirectMembership ∪ {User ↦ IndirectGroup}" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="C" org.eventb.core.label="inv10" org.eventb.core.predicate="∀rel·rel∈UserIndirectMembership ⇒ (∃path·path∈ℕ→GROUPS∧path(0)∈UserToGroupMapping[{prj1(rel)}]∧(∃k·k∈ℕ∧path(k)=prj2(rel)∧(∀n·n∈ℕ∧n&lt;k⇒path(n)↦path(n+1)∈GroupToGroupMapping)))"/>
+</org.eventb.core.machineFile>

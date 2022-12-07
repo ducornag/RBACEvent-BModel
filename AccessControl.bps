@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.psFile>
+    <org.eventb.core.psStatus name="inv9/WD" org.eventb.core.confidence="500" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="inv10/WD" org.eventb.core.confidence="500" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv8/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv9/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="INITIALISATION/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="AddUserToGroup/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="AddUserToGroup/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="AddGroupToGroup/inv8/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="AddGroupToGroup/inv9/INV" org.eventb.core.confidence="500" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="AddGroupToGroup/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ValidateIndirectGroup/inv8/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ValidateIndirectGroup/inv9/INV" org.eventb.core.confidence="500" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="RemoveGroupFromGroup/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="RemoveGroupFromGroup/inv8/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="RemoveGroupFromGroup/inv9/INV" org.eventb.core.confidence="500" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="RemoveGroupFromGroup/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="RemoveUserFromGroup/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="false"/>
+    <org.eventb.core.psStatus name="RemoveUserFromGroup/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ValidateIndirectUser/inv6/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+    <org.eventb.core.psStatus name="ValidateIndirectUser/inv10/INV" org.eventb.core.confidence="1000" org.eventb.core.poStamp="1" org.eventb.core.psManual="true"/>
+</org.eventb.core.psFile>

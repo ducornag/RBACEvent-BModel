@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="1">
+    <org.eventb.core.poPredicateSet name="CTXHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="GROUPS" org.eventb.core.type="ℙ(GROUPS)"/>
+        <org.eventb.core.poIdentifier name="USERS" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="IdPath" org.eventb.core.type="ℙ(ℤ×GROUPS)"/>
+        <org.eventb.core.poPredicate name="IdPati" org.eventb.core.predicate="finite(USERS)" org.eventb.core.source="/TestRBAC/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poPredicate name="IdPatj" org.eventb.core.predicate="finite(GROUPS)" org.eventb.core.source="/TestRBAC/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#*"/>
+        <org.eventb.core.poPredicate name="IdPatk" org.eventb.core.predicate="IdPath∈ℕ → GROUPS" org.eventb.core.source="/TestRBAC/Context.buc|org.eventb.core.contextFile#Context|org.eventb.core.axiom#,"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="UserIndirectMembership" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="GroupIndirectMembership" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="GroupToGroupMapping" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="UserToGroupMapping" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="inv9/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈GroupIndirectMembership⇒(∀path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS⇒0∈dom(path)∧path∈ℤ ⇸ GROUPS∧(path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)⇒(∀k⦂ℤ·k∈ℕ⇒k∈dom(path)∧(path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)⇒(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒n∈dom(path)∧n+1∈dom(path))))))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="inv10/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Invariant" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserIndirectMembership⇒(∀path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS⇒0∈dom(path)∧path∈ℤ ⇸ GROUPS∧(path(0)∈UserToGroupMapping[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]⇒(∀k⦂ℤ·k∈ℕ⇒k∈dom(path)∧(path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)⇒(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒n∈dom(path)∧n+1∈dom(path))))))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(USERS×GROUPS))⊆(∅ ⦂ ℙ(USERS×GROUPS))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#INITIALISATION\/inv6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv8/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="(∅ ⦂ ℙ(GROUPS×GROUPS))⊆(∅ ⦂ ℙ(GROUPS×GROUPS))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#INITIALISATION\/inv8\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv9/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈(∅ ⦂ ℙ(GROUPS×GROUPS))⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈(∅ ⦂ ℙ(GROUPS×GROUPS)))))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#INITIALISATION\/inv9\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="INITIALISATION/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  establishment" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiq"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈(∅ ⦂ ℙ(USERS×GROUPS))⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈(∅ ⦂ ℙ(USERS×GROUPS))[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈(∅ ⦂ ℙ(GROUPS×GROUPS)))))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#'"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#INITIALISATION\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershiq" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#CTXHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="GroupIndirectMembership'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="UserIndirectMembership'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="UserToGroupMapping'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="GroupToGroupMapping'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershiq" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershiq" org.eventb.core.poStamp="1"/>
+    <org.eventb.core.poSequent name="AddUserToGroup/inv6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershir"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="UserToGroupMapping∪{User ↦ Group}⊆UserIndirectMembership∪{User ↦ Group}" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#("/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#AddUserToGroup\/inv6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="AddUserToGroup/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershir"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserIndirectMembership∪{User ↦ Group}⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈(UserToGroupMapping∪{User ↦ Group})[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#("/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#AddUserToGroup\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershir" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="UserIndirectMembership'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="UserToGroupMapping'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="Group" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="User" org.eventb.core.type="USERS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershir" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershir" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="User∈USERS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#(|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="Group∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#(|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="AddGroupToGroup/inv8/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershis"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="GroupToGroupMapping∪{MemberGroup ↦ ContainingGroup}⊆GroupIndirectMembership∪{MemberGroup ↦ ContainingGroup}" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#1"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#AddGroupToGroup\/inv8\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="AddGroupToGroup/inv9/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershis"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈GroupIndirectMembership∪{MemberGroup ↦ ContainingGroup}⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping∪{MemberGroup ↦ ContainingGroup})))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#1"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#AddGroupToGroup\/inv9\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="AddGroupToGroup/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershis"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserIndirectMembership⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈UserToGroupMapping[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping∪{MemberGroup ↦ ContainingGroup})))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#1"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#AddGroupToGroup\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershis" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="GroupIndirectMembership'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="MemberGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="GroupToGroupMapping'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="ContainingGroup" org.eventb.core.type="GROUPS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershis" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershis" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="ContainingGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#1|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="MemberGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#1|org.eventb.core.guard#*"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="ValidateIndirectGroup/inv8/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershit"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="GroupToGroupMapping⊆GroupIndirectMembership∪{memberGroup ↦ containingGroup}" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#ValidateIndirectGroup\/inv8\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ValidateIndirectGroup/inv9/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershit"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈GroupIndirectMembership∪{memberGroup ↦ containingGroup}⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#ValidateIndirectGroup\/inv9\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershit" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="GroupIndirectMembership'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="containingGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="intermediateGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="memberGroup" org.eventb.core.type="GROUPS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershit" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershit" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="memberGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="containingGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="intermediateGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8|org.eventb.core.guard#+"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="memberGroup ↦ intermediateGroup∈GroupIndirectMembership" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8|org.eventb.core.guard#."/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="intermediateGroup ↦ containingGroup∈GroupToGroupMapping" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#8|org.eventb.core.guard#\/"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="RemoveGroupFromGroup/inv6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="UserToGroupMapping⊆UserToGroupMapping" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveGroupFromGroup\/inv6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="RemoveGroupFromGroup/inv8/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="GroupToGroupMapping ∖ {MemberGroup ↦ ContainingGroup}⊆GroupToGroupMapping ∖ {MemberGroup ↦ ContainingGroup}" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveGroupFromGroup\/inv8\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD5"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="RemoveGroupFromGroup/inv9/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈GroupToGroupMapping ∖ {MemberGroup ↦ ContainingGroup}⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping ∖ {MemberGroup ↦ ContainingGroup})))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveGroupFromGroup\/inv9\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{|org.eventb.core.poPredicate#PRD6"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="RemoveGroupFromGroup/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiu"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserToGroupMapping⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈UserToGroupMapping[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping ∖ {MemberGroup ↦ ContainingGroup})))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveGroupFromGroup\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershiu" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="GroupIndirectMembership'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="MemberGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="UserIndirectMembership'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="GroupToGroupMapping'" org.eventb.core.type="ℙ(GROUPS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="ContainingGroup" org.eventb.core.type="GROUPS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershiu" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershiu" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="ContainingGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="MemberGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="MemberGroup ↦ ContainingGroup∈GroupToGroupMapping" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#@|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="RemoveUserFromGroup/inv6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="UserToGroupMapping ∖ {User ↦ Group}⊆({User} ⩤ UserIndirectMembership)∪(UserToGroupMapping ∖ {User ↦ Group})" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveUserFromGroup\/inv6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="RemoveUserFromGroup/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiv"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈({User} ⩤ UserIndirectMembership)∪(UserToGroupMapping ∖ {User ↦ Group})⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈(UserToGroupMapping ∖ {User ↦ Group})[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#A"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#RemoveUserFromGroup\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershiv" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="UserIndirectMembership'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="UserToGroupMapping'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="Group" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="User" org.eventb.core.type="USERS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershiv" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershiv" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="User∈USERS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#A|org.eventb.core.guard#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="Group∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#A|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="User ↦ Group∈UserToGroupMapping" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#A|org.eventb.core.guard#+"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="ValidateIndirectUser/inv6/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="UserToGroupMapping⊆UserIndirectMembership∪{User ↦ IndirectGroup}" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#ValidateIndirectUser\/inv6\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz|org.eventb.core.poPredicate#PRD3"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poSequent name="ValidateIndirectUser/inv10/INV" org.eventb.core.accurate="true" org.eventb.core.poDesc="Invariant  preservation" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTALLHYPGroupIndirectMembershiw"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserIndirectMembership∪{User ↦ IndirectGroup}⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈UserToGroupMapping[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B"/>
+        <org.eventb.core.poSource name="SEQHYS" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+        <org.eventb.core.poSelHint name="SEQHYT" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poSelHintSnd="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poSequent#ValidateIndirectUser\/inv10\/INV|org.eventb.core.poPredicateSet#SEQHYP"/>
+        <org.eventb.core.poSelHint name="SEQHYU" org.eventb.core.poSelHintFst="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP|org.eventb.core.poPredicate#PRD7"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="EVTIDENTGroupIndirectMembershiw" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ALLHYP" org.eventb.core.poStamp="1">
+        <org.eventb.core.poIdentifier name="UserIndirectMembership'" org.eventb.core.type="ℙ(USERS×GROUPS)"/>
+        <org.eventb.core.poIdentifier name="IndirectGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="DirectGroup" org.eventb.core.type="GROUPS"/>
+        <org.eventb.core.poIdentifier name="User" org.eventb.core.type="USERS"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="EVTALLHYPGroupIndirectMembershiw" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#EVTIDENTGroupIndirectMembershiw" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="User∈USERS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B|org.eventb.core.guard#*"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="DirectGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B|org.eventb.core.guard#+"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="IndirectGroup∈GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B|org.eventb.core.guard#,"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="User ↦ DirectGroup∈UserToGroupMapping" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B|org.eventb.core.guard#-"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="DirectGroup ↦ IndirectGroup∈GroupIndirectMembership" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.event#B|org.eventb.core.guard#."/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPContexz" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="UserToGroupMapping∈USERS ↔ GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#-"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="GroupToGroupMapping∈GROUPS ↔ GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#0"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="UserIndirectMembership∈USERS ↔ GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#3"/>
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="UserToGroupMapping⊆UserIndirectMembership" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#4"/>
+        <org.eventb.core.poPredicate name="PRD4" org.eventb.core.predicate="GroupIndirectMembership∈GROUPS ↔ GROUPS" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#6"/>
+        <org.eventb.core.poPredicate name="PRD5" org.eventb.core.predicate="GroupToGroupMapping⊆GroupIndirectMembership" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#7"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="HYPContex{" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContexz" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD6" org.eventb.core.predicate="∀rel⦂GROUPS×GROUPS·rel∈GroupIndirectMembership⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)=(prj1 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(GROUPS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#9"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/TestRBAC/AccessControl.bpo|org.eventb.core.poFile#AccessControl|org.eventb.core.poPredicateSet#HYPContex{" org.eventb.core.poStamp="1">
+        <org.eventb.core.poPredicate name="PRD7" org.eventb.core.predicate="∀rel⦂USERS×GROUPS·rel∈UserIndirectMembership⇒(∃path⦂ℙ(ℤ×GROUPS)·path∈ℕ → GROUPS∧path(0)∈UserToGroupMapping[{(prj1 ⦂ ℙ(USERS×GROUPS×USERS))(rel)}]∧(∃k⦂ℤ·k∈ℕ∧path(k)=(prj2 ⦂ ℙ(USERS×GROUPS×GROUPS))(rel)∧(∀n⦂ℤ·n∈ℕ∧n&lt;k⇒path(n) ↦ path(n+1)∈GroupToGroupMapping)))" org.eventb.core.source="/TestRBAC/AccessControl.bum|org.eventb.core.machineFile#AccessControl|org.eventb.core.invariant#C"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>
